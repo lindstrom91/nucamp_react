@@ -28,6 +28,12 @@ class Header extends Component {
         });
     }
 
+    handleLogin(event) {
+        alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
+        this.toggleModal();
+        event.preventDefault();
+    }
+
     render() {
         return (
             <React.Fragment>
