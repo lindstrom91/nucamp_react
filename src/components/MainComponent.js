@@ -6,11 +6,10 @@ import CampsiteInfo from './CampsiteInfoComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const mappropsToProps = props => {
+const mapStateToProps = state => {
     return {
         campsites: state.campsites,
         comments: state.comments,
@@ -36,12 +35,10 @@ class Main extends Component {
 
         const CampsiteWithId = ({match}) => {
             return (
-                <CampsiteInfo 
-                    campsite={this.props.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
-                    comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
-                />
+                <CampsiteInfo campsite={this.props.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]} 
+                  comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)} />
             );
-        };    
+        };
 
         return (
             <div>
